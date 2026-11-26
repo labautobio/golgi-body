@@ -30,8 +30,9 @@ h1 { font-size:1.25rem; margin:0; line-height:1.35; }
 </head>
 <body>
 <div class="wrap">
-  <h1>細胞周期の段階ごとの核とゴルジ体（3D）<br><span style="font-size:.85em;font-weight:500">Nucleus–Golgi conformation across the cell cycle</span></h1>
-  <p class="sub">BMB2026 ポスター［ポスター番号］の補足。ドラッグで回転、ピンチ／ホイールで拡大。<br>Drag to rotate, pinch or scroll to zoom.</p>
+  <p class="sub">BMB2026 · Late-breaking Abstract · ポスター 2LBA-0033 の補足 / Supplementary page</p>
+  <h1>核表面形態に対するcis-ゴルジおよびtrans-ゴルジ斑点の3次元配置の細胞周期依存性<br><span style="font-size:.8em;font-weight:500">Cell-cycle-associated 3D positioning of cis- and trans-Golgi puncta relative to nuclear surface morphology</span></h1>
+  <p class="sub">代表の核の 3D 表示。ドラッグで回転、ピンチ／ホイールで拡大。<br>3D view of representative nuclei. Drag to rotate, pinch or scroll to zoom.</p>
   <div class="viewer-tabs" id="vtabs" role="tablist" aria-label="代表の核"></div>
   <div class="viewer-stage" id="vstage"><canvas id="vcanvas" aria-label="核とゴルジ体の 3D 表示"></canvas></div>
   <div class="viewer-note" id="vnote">読み込み中… / Loading…</div>
@@ -48,6 +49,14 @@ h1 { font-size:1.25rem; margin:0; line-height:1.35; }
   <div class="box">
     <p>HEK293T・IMR-90。細胞周期の段階は 20x の DNA 量（Hoechst）と EdU で G1・S・G2M に分け、G2M は DAPI の凝縮で G2（間期）と M（分裂期）に分けた。60x 水浸（NA 1.27）の Z スタック、0.125 µm 間隔。cis と trans がそろう構造だけをゴルジ体とした。各段階の代表は、指標が段階の中央値に最も近い核を規則で選んだ。床の格子は 5 µm。</p>
     <p>Unpublished data. Please do not redistribute.（未発表データです。転載しないでください）</p>
+  </div>
+  <h2 style="font-size:1.05rem;margin:8px 0 0">補足図：段階ごとの分布 / Supplementary figure: distributions by stage</h2>
+  <div class="box" style="padding:8px;background:#fff">
+    <img src="fig_s1_distributions.png" alt="HEK293T と IMR-90 の、G1・S・G2・M ごとの 6 つの指標の分布" style="display:block;width:100%;height:auto">
+  </div>
+  <div class="box">
+    <p>点は核、横線は中央値、縦線は四分位。cis+trans のゴルジ体が 1 µm³ 以上ある核。片寄り＝核の重心から見たゴルジ体の方位の集中度（0 全周、1 一方向）。広がり＝ゴルジ体の回転半径。断片の数＝つながった cis+trans の構造の数。距離＝ゴルジ体から割り当てた核の表面までの距離の平均。</p>
+    <p>Dots, nuclei; horizontal bar, median; vertical bar, interquartile range. Polarity: directional concentration of the Golgi around the nuclear centroid (0, all around; 1, one side). Spread: radius of gyration of the Golgi.</p>
   </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
