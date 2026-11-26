@@ -12,7 +12,7 @@
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 500);
-  camera.up.set(0, 0, 1); camera.position.set(-30, -38, 26);
+  camera.up.set(0, 0, 1); camera.position.set(-27, -34, 25);
   const controls = new THREE.OrbitControls(camera, canvas);
   controls.enableDamping = true; controls.target.set(0, 0, 0);
   scene.add(new THREE.AmbientLight(0xffffff, 0.75));
@@ -36,11 +36,11 @@
     const nuc = new THREE.Mesh(geo, new THREE.MeshLambertMaterial({ color: css("--nuc") || "#8aa0c8", transparent: true, opacity: 0.28, depthWrite: false, side: THREE.DoubleSide }));
     nuc.name = "nuc"; nuc.visible = nucBox.checked; group.add(nuc);
     const off = new THREE.Group(); off.name = "off";
-    off.add(pointsObj(d.pts.cis_only, css("--off") || "#9a9a9a", 0.22, 0.35));
-    off.add(pointsObj(d.pts.trans_only, css("--off") || "#9a9a9a", 0.22, 0.35));
+    off.add(pointsObj(d.pts.cis_only, css("--off") || "#9a9a9a", 0.3, 0.4));
+    off.add(pointsObj(d.pts.trans_only, css("--off") || "#9a9a9a", 0.3, 0.4));
     off.visible = offBox.checked; group.add(off);
-    group.add(pointsObj(d.pts.trans, css("--trans") || "#1f9e3a", 0.26, 0.6));
-    group.add(pointsObj(d.pts.cis, css("--cis") || "#c2188b", 0.26, 0.8));
+    group.add(pointsObj(d.pts.trans, css("--trans") || "#1f9e3a", 0.42, 0.75));
+    group.add(pointsObj(d.pts.cis, css("--cis") || "#c2188b", 0.42, 0.9));
     // 1 目盛り 5 µm の床の格子
     const grid = new THREE.GridHelper(30, 6, 0x999999, 0xcccccc); grid.rotation.x = Math.PI / 2; grid.position.z = -6;
     grid.material.transparent = true; grid.material.opacity = 0.35; group.add(grid);
