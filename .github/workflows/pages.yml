@@ -1,5 +1,6 @@
 # 3d_catalog フォルダを GitHub Pages のサイトのルートとして公開する
 # 初回だけ：Settings → Pages → Build and deployment の Source を「GitHub Actions」にする
+# 成果物のアップロード（build）と公開（deploy）を別のジョブに分ける（同じジョブだと deploy が成果物を見つけられないことがある）
 name: Deploy 3d_catalog to GitHub Pages
 
 on:
@@ -17,19 +18,24 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
           path: 3d_catalog
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v4
