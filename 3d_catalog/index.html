@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Nucleus–Golgi 3D | BMB2026 poster</title>
+<style>
+:root { --bg:#f5f6f8; --panel:#fff; --ink:#15171c; --ink-2:#4a4f5a; --rule:#dde0e6; --accent:#2b3f8f;
+  --cis:#c2188b; --trans:#1f9e3a; --nuc:#8aa0c8; --off:#9a9a9a; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root { --bg:#13151a; --panel:#1b1e25; --ink:#eceef2; --ink-2:#b9bec9; --rule:#2e323c; --accent:#9fb0f0;
+  --cis:#e05aaf; --trans:#4cc46a; color-scheme: dark; } }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font-family:"Noto Sans JP","Yu Gothic","Hiragino Sans",system-ui,sans-serif; line-height:1.6; }
+.wrap { max-width:900px; margin:0 auto; padding:20px max(14px, env(safe-area-inset-left)) 40px max(14px, env(safe-area-inset-right)); display:grid; gap:14px; }
+h1 { font-size:1.25rem; margin:0; line-height:1.35; }
+.sub { color:var(--ink-2); font-size:.9rem; margin:0; }
+.viewer-tabs { display:flex; flex-wrap:wrap; gap:6px; }
+.viewer-tabs button { font:inherit; font-size:.85rem; padding:5px 12px; border-radius:999px; border:1px solid var(--rule); background:var(--panel); color:var(--ink); cursor:pointer; }
+.viewer-tabs button[aria-selected="true"] { background:var(--accent); border-color:var(--accent); color:var(--panel); }
+.viewer-stage { background:var(--panel); border:1px solid var(--rule); border-radius:8px; overflow:hidden; touch-action:none; }
+.viewer-stage canvas { display:block; }
+.viewer-note { font-size:.85rem; color:var(--ink-2); }
+.viewer-ctrl { display:flex; flex-wrap:wrap; gap:14px; font-size:.85rem; color:var(--ink-2); }
+.legend { display:flex; flex-wrap:wrap; gap:12px; font-size:.85rem; color:var(--ink-2); }
+.sw { display:inline-block; width:11px; height:11px; border-radius:2px; margin-right:5px; vertical-align:-1px; }
+.box { background:var(--panel); border:1px solid var(--rule); border-radius:8px; padding:12px 14px; font-size:.88rem; color:var(--ink-2); display:grid; gap:6px; }
+.box p { margin:0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>細胞周期の段階ごとの核とゴルジ体（3D）<br><span style="font-size:.85em;font-weight:500">Nucleus–Golgi conformation across the cell cycle</span></h1>
+  <p class="sub">BMB2026 ポスター［ポスター番号］の補足。ドラッグで回転、ピンチ／ホイールで拡大。<br>Drag to rotate, pinch or scroll to zoom.</p>
+  <div class="viewer-tabs" id="vtabs" role="tablist" aria-label="代表の核"></div>
+  <div class="viewer-stage" id="vstage"><canvas id="vcanvas" aria-label="核とゴルジ体の 3D 表示"></canvas></div>
+  <div class="viewer-note" id="vnote">読み込み中… / Loading…</div>
+  <div class="legend">
+    <span><i class="sw" style="background:var(--nuc)"></i>核 nucleus</span>
+    <span><i class="sw" style="background:var(--cis)"></i>cis（GM130）</span>
+    <span><i class="sw" style="background:var(--trans)"></i>trans（TGN46）</span>
+    <span><i class="sw" style="background:var(--off)"></i>片方だけの構造（解析から除外）single-marker structures (excluded)</span>
+  </div>
+  <div class="viewer-ctrl">
+    <label><input type="checkbox" id="v-off" checked> 片方だけの構造 / single-marker</label>
+    <label><input type="checkbox" id="v-nuc" checked> 核の面 / nucleus surface</label>
+  </div>
+  <div class="box">
+    <p>HEK293T・IMR-90。細胞周期の段階は 20x の DNA 量（Hoechst）と EdU で G1・S・G2M に分け、G2M は DAPI の凝縮で G2（間期）と M（分裂期）に分けた。60x 水浸（NA 1.27）の Z スタック、0.125 µm 間隔。cis と trans がそろう構造だけをゴルジ体とした。各段階の代表は、指標が段階の中央値に最も近い核を規則で選んだ。床の格子は 5 µm。</p>
+    <p>Unpublished data. Please do not redistribute.（未発表データです。転載しないでください）</p>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="viewer.js"></script>
+</body>
+</html>
